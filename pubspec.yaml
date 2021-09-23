@@ -36,6 +36,7 @@ dependencies:
   easy_mask:
   image_picker:
   o_color_picker:
+  animated_background:
   sliding_switch: 0.0.3
 
 
