@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 import 'package:masonry_grid/masonry_grid.dart';
 import 'package:poshop/checkout/checkout.dart';
 import 'package:poshop/home/controllers/HomeController.dart';
+import 'package:poshop/products/controllers/ProductContoller.dart';
 
 class Products extends StatelessWidget{
   HomeContoller controllerHome = Get.find();
+  ProductContoller controllerProduct = Get.put(ProductContoller());
 
   @override
   Widget build(BuildContext context) {
@@ -241,7 +243,23 @@ class Products extends StatelessWidget{
                                 )
                               ],
                             ),
-                            margin: EdgeInsets.only(left: 10,right: 10),
+                            margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+                          ),
+                          Container(
+
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(child: Container(
+                                  margin: EdgeInsets.only(right: 10),
+                                  child: Text("Procuto 1  x 1",style: TextStyle(fontSize: 15),),
+                                )),
+                                Container(
+                                  child: Text("\$5.000",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                                )
+                              ],
+                            ),
+                            margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
                           )
                         ],
                       ),
