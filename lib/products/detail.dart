@@ -696,11 +696,15 @@ class DetailProduct extends StatelessWidget {
                                       canSubmit=false;
                                     }
                                     if(canSubmit){
-                                      if(controllerHome.item_id.value!=0){
-                                        await controllerHome.createProduct();
+                                     if(controllerHome.item_id.value =="0"){
+                                       print("aquiii el item id ${controllerHome.item_id.value}");
+
+                                       await controllerHome.createProduct();
                                       }else{
                                         await controllerHome.updateProduct();
-                                      }
+
+
+                                     }
                                       controllerHome.resetCreationProduct();
                                       controllerHome.panelController.value.close();
 

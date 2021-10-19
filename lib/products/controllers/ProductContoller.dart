@@ -81,16 +81,19 @@ class ProductContoller extends GetxController {
     costController.text="${product.primeCost}";
     referenceController.text="${product.reference}";
     barCodeController.text="${product.barCode}";
-    if(product.divisible=="1"){
-      divisible.value=false;
-    }else{
+
+    if(product.divisible==1){
       divisible.value=true;
+    }else{
+      divisible.value=false;
     }
 
+    print("sadf asdf asdf asd   ${product.divisible}  ${divisible.value}");
 
     if(product.image!=null){
       imageUpload.value=product.image;
     }
+
 
     if(product.category!=null){
       selectedCategory.value=product.category.id;
@@ -115,14 +118,23 @@ class ProductContoller extends GetxController {
         selectedForm.value = "pentagon.png";
       }
 
+      item_name.value=product.itemNme;
+      reference.value=product.article;
+      reference.value=product.reference;
+
+      barcode.value= product.barCode;
+      primeCost.value="${product.primeCost}";
+      salePrice.value="${product.salesPrice}";
+
       isFormSelected.value = true;
       isSelectedColor.value=true;
       color.value=product.color;
       shape.value=product.shape;
+      item_id.value="${product.id}";
       var colors="0xff${product.color}".replaceAll("#", "");
       selectedColor.value=int.parse(colors);
 
-      print("productname  ${ selectedForm.value}");
+      print("productname  ${ selectedForm.value}  ${item_id.value}");
 
     }else{
       isImagen.value=false;
@@ -232,6 +244,8 @@ class ProductContoller extends GetxController {
   }
 
   Future updateProduct() async {
+    print("aquii actualiza");
+
     var prefs = await SharedPreferences.getInstance();
 
     var outlet=prefs.getInt("outletId");
