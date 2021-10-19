@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:dio/dio.dart' as dios;
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:poshop/categories/models/Category.dart';
 import 'package:poshop/products/model/Product.dart';
 
 import 'package:poshop/products/product_provider.dart';
@@ -11,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:developer';
 
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:poshop/categories/models/Category.dart' as cat;
 
 class ProductContoller extends GetxController {
 
@@ -48,6 +51,13 @@ class ProductContoller extends GetxController {
   var image = "".obs;
   var imageUpload = "".obs;
 
+  final nameController = TextEditingController();
+  final priceController = TextEditingController();
+  final costController = TextEditingController();
+  final referenceController = TextEditingController();
+  final barCodeController = TextEditingController();
+
+
   var isImagen=false.obs;
 
   Client _client = new Client();
@@ -62,12 +72,85 @@ class ProductContoller extends GetxController {
     getProducts();
   }
 
+  setProduct(Product product){
+    print("product ${product}");
+    ///formKey.value.currentState.reset();
+
+    nameController.text=product.itemNme;
+    priceController.text="${product.salesPrice}";
+    costController.text="${product.primeCost}";
+    referenceController.text="${product.reference}";
+    barCodeController.text="${product.barCode}";
+    if(product.divisible=="1"){
+      divisible.value=false;
+    }else{
+      divisible.value=true;
+    }
+
+
+    if(product.image!=null){
+      imageUpload.value=product.image;
+    }
+
+    if(product.category!=null){
+      selectedCategory.value=product.category.id;
+      selectedCategoryName.value=product.category.name;
+    }
+
+    if(product.representation=="color_y_forma"){
+      isImagen.value=true;
+      if(product.shape=="CIRCLE"){
+        selectedForm.value = "circle.png";
+      }
+
+      if(product.shape=="SQUARE"){
+        selectedForm.value = "square.png";
+      }
+
+      if(product.shape=="SUN"){
+        selectedForm.value = "star.png";
+      }
+
+      if(product.shape=="HEXAGON"){
+        selectedForm.value = "pentagon.png";
+      }
+
+      isFormSelected.value = true;
+      isSelectedColor.value=true;
+      color.value=product.color;
+      shape.value=product.shape;
+      var colors="0xff${product.color}".replaceAll("#", "");
+      selectedColor.value=int.parse(colors);
+
+      print("productname  ${ selectedForm.value}");
+
+    }else{
+      isImagen.value=false;
+
+
+
+    }
+
+
+
+
+
+
+  }
+
   resetCreationProduct(){
 
     formKey.value.currentState.reset();
     isFormSelected.value=false;
     isSelectedColor.value=false;
       selectedColor.value = 0xffffffff;
+
+
+    nameController.text="";
+    priceController.text="";
+    costController.text="";
+    referenceController.text="";
+    barCodeController.text="";
 
      item_name.value = "";
      item_id.value = "0";
@@ -100,7 +183,7 @@ class ProductContoller extends GetxController {
       var productObject={
         "item_name": item_name.value,
         "article": reference.value,
-        "representacion": isImagen.value ?  "color_y_forma" : "imagen",
+        "representation": isImagen.value ?  "color_y_forma" : "imagen",
         "color": color.value,
         "shape":  shape.value,
         "allOutlets": allOutlets.value,
@@ -108,6 +191,7 @@ class ProductContoller extends GetxController {
         "keepCount": keepCount.value,
         "salePrice": salePrice.value,
         "primeCost": primeCost.value,
+        "barcode":barcode.value,
         "type": type.value,
         "idCategory":selectedCategory.value,
         "outlets": [
@@ -162,7 +246,7 @@ class ProductContoller extends GetxController {
       var productObject={
         "item_name": item_name.value,
         "article": reference.value,
-        "representacion": isImagen.value ?  "color_y_forma" : "imagen",
+        "representation": isImagen.value ?  "color_y_forma" : "imagen",
         "color": color.value,
         "shape":  shape.value,
         "allOutlets": allOutlets.value,
@@ -170,6 +254,7 @@ class ProductContoller extends GetxController {
         "keepCount": keepCount.value,
         "salePrice": salePrice.value,
         "primeCost": primeCost.value,
+        "barcode":barcode.value,
         "type": type.value,
         "idCategory":selectedCategory.value,
         "image":imageUpload,
@@ -231,6 +316,14 @@ class ProductContoller extends GetxController {
           product.purchaseCost = dataJson[i]["purchaseCost"];
           product.salesPrice = dataJson[i]["salePrice"];
           product.shape = dataJson[i]["shape"];
+          product.reference = dataJson[i]["article"];
+          product.representation = dataJson[i]["representation"];
+
+          if(dataJson[i]["category"]!=null){
+            var category= cat.Category(dataJson[i]["category"]["id"], 1, dataJson[i]["category"]["name"], dataJson[i]["category"]["color"]);
+            product.category = category;
+          }
+
 
           productsLocal.add(product);
         }
