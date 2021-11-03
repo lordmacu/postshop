@@ -76,6 +76,7 @@ class Products extends StatelessWidget {
         Container(
             padding: EdgeInsets.only(left: 20, right: 20, top: 15),
             child: Obx(() => ScrollablePositionedList.builder(
+              addAutomaticKeepAlives: false,
 
               itemScrollController: controllerHome.itemScrollController.value,
               itemPositionsListener:  controllerHome.itemPositionsListener.value,

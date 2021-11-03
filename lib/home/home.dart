@@ -21,7 +21,10 @@ import 'package:poshop/products/model/Product.dart';
 import 'package:poshop/products/products.dart';
 import 'package:poshop/tickets/tickets.dart';
 
-class Home extends StatelessWidget  {
+class Home extends StatelessWidget   {
+
+
+
   MenuContoller controller = Get.put(MenuContoller());
   HomeContoller  controllerHome = Get.put(HomeContoller());
   CategoryContoller controllerCategory = Get.put(CategoryContoller());
