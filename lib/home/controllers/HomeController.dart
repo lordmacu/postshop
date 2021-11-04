@@ -26,16 +26,17 @@ class HomeContoller extends GetxController  with SingleGetTickerProviderMixin{
 
   jumpToIndex(index){
 
-    itemScrollController.value.scrollTo(
+    /*itemScrollController.value.scrollTo(
         index: index,
         duration: Duration(seconds: 1),
-        curve: Curves.easeInOutCubic);
+        curve: Curves.easeInOutCubic);*/
 
   }
 
   @override
   void onInit() {
     super.onInit();
+    itemScrollController = ItemScrollController().obs;
     itemPositionsListener = ItemPositionsListener.create().obs;
 
     controller = TabController(vsync: this, length: 3);
