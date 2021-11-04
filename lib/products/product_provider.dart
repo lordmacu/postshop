@@ -24,7 +24,7 @@ class ProductProvider {
     try {
 
       final response = await _client.get(
-          '/items?devMode=true&itemsPerPage=20&page=1?cache=${random.nextInt(1000000000)}');
+          '/items?devMode=true&itemsPerPage=20&page=1?_dc=${DateTime.now().millisecondsSinceEpoch}');
 
       return json.decode(response.toString());
     } on DioError catch (ex) {
