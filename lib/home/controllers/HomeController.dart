@@ -36,6 +36,8 @@ class HomeContoller extends GetxController  with SingleGetTickerProviderMixin{
   @override
   void onInit() {
     super.onInit();
+    itemPositionsListener = ItemPositionsListener.create().obs;
+
     controller = TabController(vsync: this, length: 3);
 
   }

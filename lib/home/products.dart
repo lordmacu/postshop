@@ -75,7 +75,7 @@ class Products extends StatelessWidget {
       children: [
         Container(
             padding: EdgeInsets.only(left: 20, right: 20, top: 15),
-            child: Obx(() => ScrollablePositionedList.builder(
+            child: Obx(() => controllerProduct.products.length >0 ? ScrollablePositionedList.builder(
               addAutomaticKeepAlives: false,
 
               itemScrollController: controllerHome.itemScrollController.value,
@@ -318,7 +318,7 @@ class Products extends StatelessWidget {
                           ),
                         ));
                   },
-                ))),
+                ): Container())),
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
