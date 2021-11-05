@@ -374,6 +374,9 @@ class ProductContoller extends GetxController {
 
   getProducts() async {
 
+    _endpointProvider =
+    new ProductProvider(_client.init(prefs.getString("token")));
+
     controllerLoading.isLoading.value=true;
     try {
       var data = await _endpointProvider.getProducts();
