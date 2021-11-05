@@ -78,12 +78,12 @@ class ProductContoller extends GetxController {
 
   @override
   void onInit() async {
-
-    print("cargando otra vez");
     var prefs = await SharedPreferences.getInstance();
+
+    print("cargando otra vez  ${_client.init(prefs.getString("token"))}");
     _endpointProvider =
         new ProductProvider(_client.init(prefs.getString("token")));
-    getProducts();
+  //  getProducts();
   }
 
   setProduct(Product product){
@@ -417,13 +417,13 @@ class ProductContoller extends GetxController {
         products.assignAll(productsLocal);
         controllerLoading.isLoading.value=false;
 
-        return true;
+        return data;
       }
     } catch (e) {
       controllerLoading.isLoading.value=false;
 
-      print("aqui esta el error ${e}");
-      return false;
+      print("aqui esta el error ${e.toString()}");
+      return e.toString();
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:masonry_grid/masonry_grid.dart';
@@ -73,6 +74,34 @@ class Products extends StatelessWidget {
     return Expanded(
         child: Stack(
       children: [
+
+        RaisedButton(
+          padding: EdgeInsets.only(top: 15, bottom: 15),
+          onPressed: () async {
+
+            var response = await controllerProduct.getProducts();
+
+            Fluttertoast.showToast(
+                msg: " este e l texto ${response}",
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0
+            );
+
+          },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          color: Color(0xff298dcf),
+          child: Text(
+            "cargar productos",
+            style: TextStyle(color: Colors.white, fontSize: 17),
+          ),
+        ),
+
         Container(
             padding: EdgeInsets.only(left: 20, right: 20, top: 15),
             child: Obx(() => controllerHome.itemScrollController.value!=null ? ListView.builder(

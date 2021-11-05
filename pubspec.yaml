@@ -50,6 +50,7 @@ dependencies:
   ai_barcode: 2.1.0
   flutter_barcode_scanner: 1.0.2
   scrollable_positioned_list: 0.1.10
+  fluttertoast: 7.1.8
 
 dev_dependencies:
   flutter_launcher_icons: "^0.8.1"
