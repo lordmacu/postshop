@@ -52,7 +52,7 @@ class CategoryContoller extends GetxController{
 
         items.value=categoryes;
 
-        controllerProduct.getProducts();
+       // controllerProduct.getProducts();
 
 
         return true;
