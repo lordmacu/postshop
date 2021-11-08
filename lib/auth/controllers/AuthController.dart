@@ -63,9 +63,14 @@ class AuthContoller extends GetxController{
       prefs.setString("user", jsonEncode(data));
       //prefs.setInt("outletId",  data["user"]["outlet"]["id"]);
       //prefs.setInt("cashRegister",  data["user"]["cashRegister"]["id"]);
-      if(data["idOrg"]!=null){
-        prefs.setInt("idOrg",   data["idOrg"]);
-      }
+
+        try{
+          prefs.setInt("idOrg", data["idOrg"]);
+
+        }catch(e){
+
+        }
+
       prefs.setString("token", data["token"]);
       token.value=data["token"];
       outletsAvailable();
