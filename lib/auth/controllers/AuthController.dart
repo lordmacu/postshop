@@ -59,17 +59,17 @@ class AuthContoller extends GetxController{
     prefs = await SharedPreferences.getInstance();
 
     prefs.setBool("isLogged", login);
+
+    print("esta es la data del login   ${data}");
     if(data!=null){
       prefs.setString("user", jsonEncode(data));
       //prefs.setInt("outletId",  data["user"]["outlet"]["id"]);
       //prefs.setInt("cashRegister",  data["user"]["cashRegister"]["id"]);
 
-        try{
+
           prefs.setInt("idOrg", data["idOrg"]);
 
-        }catch(e){
 
-        }
 
       prefs.setString("token", data["token"]);
       token.value=data["token"];
