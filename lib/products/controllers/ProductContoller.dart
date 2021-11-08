@@ -86,6 +86,9 @@ class ProductContoller extends GetxController {
      getProducts();
   }
 
+
+
+
   setProduct(Product product){
     print("product ${product}");
     ///formKey.value.currentState.reset();
