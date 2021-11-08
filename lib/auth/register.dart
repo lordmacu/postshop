@@ -18,8 +18,8 @@ class Register extends StatelessWidget{
     loadingHud.dismiss();
 
     if (isLoggedApi!="ok") {
-      helpers.defaultAlert(context, "error", "${isLoggedApi.message}",
-          "${isLoggedApi.data}");
+      helpers.defaultAlert(context, "error", "${isLoggedApi["message"]}",
+          "${isLoggedApi["data"]}");
     } else {
       Navigator.push(
         context,
