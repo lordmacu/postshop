@@ -176,13 +176,13 @@ class AuthContoller extends GetxController{
       print("esta es la data ${data}");
       if(data["success"]){
         loginUserSystem(true,data["data"]);
-        return true;
+        return "ok";
       }
     }catch(e){
       print("esta es la data ${e}");
 
       loginUserSystem(false,null);
-      return false;
+      return e.toString();
     }
   }
 

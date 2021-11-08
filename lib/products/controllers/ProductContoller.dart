@@ -382,7 +382,7 @@ class ProductContoller extends GetxController {
     new ProductProvider(_client.init(prefs.getString("token")));
 
     controllerLoading.isLoading.value=true;
-   // try {
+   try {
       var data = await _endpointProvider.getProducts();
 
       if (data["success"]) {
@@ -426,11 +426,11 @@ class ProductContoller extends GetxController {
 
         return data;
       }
-    /*} catch (e) {
+   } catch (e) {
       controllerLoading.isLoading.value=false;
 
       print("aqui esta el error ${e.toString()}");
       return e.toString();
-    }*/
+    }
   }
 }
