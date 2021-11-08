@@ -81,9 +81,9 @@ class ProductContoller extends GetxController {
     var prefs = await SharedPreferences.getInstance();
 
     print("cargando otra vez  ${prefs.getString("token")}");
-    _endpointProvider =
-        new ProductProvider(_client.init(prefs.getString("token")));
-     getProducts();
+
+    _endpointProvider = new ProductProvider(_client.init(prefs.getString("token")));
+
   }
 
 
@@ -379,6 +379,7 @@ class ProductContoller extends GetxController {
     var prefs = await SharedPreferences.getInstance();
 
 
+    print("cargando otra vez  ${prefs.getString("token")}");
 
     controllerLoading.isLoading.value=true;
    try {

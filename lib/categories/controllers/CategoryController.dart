@@ -13,7 +13,7 @@ import 'package:poshop/products/controllers/ProductContoller.dart';
 class CategoryContoller extends GetxController{
 
   AuthContoller controllerAuth=AuthContoller();
-  ProductContoller controllerProduct = Get.put(ProductContoller());
+  ProductContoller controllerProduct = Get.find();
 
   var isPanelOpen=false.obs;
   var categorySelect=0.obs;
@@ -34,6 +34,10 @@ class CategoryContoller extends GetxController{
 
   getCategories() async{
 
+    var  prefs = await SharedPreferences.getInstance();
+
+    print("getcatgegoriessss  ${prefs.getString("token")}");
+
     try{
       var data = await _endpointProvider.getCategories();
 
@@ -53,7 +57,6 @@ class CategoryContoller extends GetxController{
         items.value=categoryes;
 
         controllerProduct.getProducts();
-        print("aqyuu esta=?");
 
 
         return true;

@@ -127,7 +127,7 @@ class AuthContoller extends GetxController{
       prefs.setInt("outletId", 0);
       prefs.setString("cashier", "");
       prefs.setString("cashierId", "");
-      prefs.clear();
+      //prefs.clear();
 
       print("error : ${e}");
 
