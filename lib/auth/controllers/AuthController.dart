@@ -71,6 +71,9 @@ class AuthContoller extends GetxController{
 
 
 
+
+
+
       prefs.setString("token", data["token"]);
       token.value=data["token"];
       outletsAvailable();
