@@ -20,7 +20,7 @@ class Login extends StatelessWidget {
     var isLoggedApi = await controllerAuth.login();
     loadingHud.dismiss();
 
-    if (!isLoggedApi) {
+    if (isLoggedApi!="ok") {
       helpers.defaultAlert(context, "error", "${isLoggedApi["message"]}",
           "${isLoggedApi["data"]}");
     } else {
