@@ -8,10 +8,13 @@ import 'package:poshop/categories/models/Category.dart';
 
 import 'package:poshop/service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:poshop/products/controllers/ProductContoller.dart';
 
 class CategoryContoller extends GetxController{
 
   AuthContoller controllerAuth=AuthContoller();
+  ProductContoller controllerProduct = Get.put(ProductContoller());
+
   var isPanelOpen=false.obs;
   var categorySelect=0.obs;
 
@@ -48,6 +51,9 @@ class CategoryContoller extends GetxController{
         }
 
         items.value=categoryes;
+
+        controllerProduct.getProducts();
+
 
         return true;
       }

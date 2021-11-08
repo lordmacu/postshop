@@ -83,7 +83,6 @@ class ProductContoller extends GetxController {
     print("cargando otra vez  ${_client.init(prefs.getString("token"))}");
     _endpointProvider =
         new ProductProvider(_client.init(prefs.getString("token")));
-  //  getProducts();
   }
 
   setProduct(Product product){
