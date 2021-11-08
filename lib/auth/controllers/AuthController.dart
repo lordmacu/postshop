@@ -123,10 +123,11 @@ class AuthContoller extends GetxController{
       }
     }catch(e){
       prefs = await SharedPreferences.getInstance();
-      prefs.setString("outlet", null);
-      prefs.setString("outletId", null);
-      prefs.setString("cashier", null);
-      prefs.setString("cashierId", null);
+      prefs.setString("outlet", "");
+      prefs.setString("outletId", "");
+      prefs.setString("cashier", "");
+      prefs.setString("cashierId", "");
+      prefs.clear();
 
       print("error : ${e}");
 
