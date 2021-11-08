@@ -93,7 +93,7 @@ class AuthContoller extends GetxController{
       }
     }catch(e){
       loginUserSystem(false,null);
-      return jsonDecode(e.message);
+      return replaceExeptionText(e.message);
     }
   }
 
@@ -179,10 +179,10 @@ class AuthContoller extends GetxController{
         return "ok";
       }
     }catch(e){
-      var erros=replaceExeptionText(e.message);
 
-   loginUserSystem(false,null);
-     return erros;
+    loginUserSystem(false,null);
+     return replaceExeptionText(e.message);
+
     }
   }
 
