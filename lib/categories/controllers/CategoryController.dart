@@ -52,7 +52,8 @@ class CategoryContoller extends GetxController{
 
         items.value=categoryes;
 
-       // controllerProduct.getProducts();
+        controllerProduct.getProducts();
+        print("aqyuu esta=?");
 
 
         return true;
