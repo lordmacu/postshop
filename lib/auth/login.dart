@@ -21,8 +21,8 @@ class Login extends StatelessWidget {
     loadingHud.dismiss();
 
     if (!isLoggedApi) {
-      helpers.defaultAlert(context, "error", "Error al ingresar",
-          "Por favor verifique la contraseña o el email.");
+      helpers.defaultAlert(context, "error", "${isLoggedApi["message"]}",
+          "${isLoggedApi["data"]}");
     } else {
       Navigator.push(
         context,

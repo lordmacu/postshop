@@ -89,11 +89,11 @@ class AuthContoller extends GetxController{
        if(data["success"]){
         loginUserSystem(true,data["data"]);
 
-        return true;
+        return "ok";
       }
     }catch(e){
       loginUserSystem(false,null);
-      return false;
+      return jsonDecode(e.message);
     }
   }
 
@@ -179,11 +179,15 @@ class AuthContoller extends GetxController{
         return "ok";
       }
     }catch(e){
-      print("esta es la data ${e}");
+      var erros=replaceExeptionText(e.message);
 
-      loginUserSystem(false,null);
-      return e.toString();
+   loginUserSystem(false,null);
+     return erros;
     }
+  }
+
+  replaceExeptionText(String text){
+   return  jsonDecode(text.replaceAll("Exception: ", ""));
   }
 
 }
