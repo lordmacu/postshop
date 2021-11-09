@@ -437,20 +437,29 @@ class Products extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(top: 3),
                               child: Obx((){
+                                if(controlelrCart.items.length>0){
+                                  var items=controlelrCart.items;
+                                  var total= 0;
+                                  for(var i =0  ; i  < items.length ; i++ ){
+                                    total=total+(items[i].product.salesPrice*items[i].numberItem);
+                                  }
 
-                                var items=controlelrCart.items;
-                                var total= 0;
-                                for(var i =0  ; i  < items.length ; i++ ){
-                                  total=total+(items[i].product.salesPrice*items[i].numberItem);
+                                  controllerCheckout.valueCheckout.value="${total}";
+
+                                  return Text(
+                                    "\$${formatedNumber(total)}",
+                                    style: TextStyle(color: Colors.white),
+                                    textAlign: TextAlign.center,
+                                  );
+                                }else{
+                                  return Text(
+                                    "\$ 0",
+                                    style: TextStyle(color: Colors.white),
+                                    textAlign: TextAlign.center,
+                                  );
                                 }
 
-                                controllerCheckout.valueCheckout.value="${total}";
 
-                                return Text(
-                                  "\$${formatedNumber(total)}",
-                                  style: TextStyle(color: Colors.white),
-                                  textAlign: TextAlign.center,
-                                );
                               }),
                             )
                           ],

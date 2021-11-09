@@ -62,7 +62,7 @@ class CategoryContoller extends GetxController{
         return true;
       }
     }catch(e){
-      print("aqui esta el error ${e}");
+      print("aqui esta el error category ${e}");
       return false;
     }
   }

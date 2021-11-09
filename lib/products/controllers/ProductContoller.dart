@@ -253,7 +253,7 @@ class ProductContoller extends GetxController {
 
       }
     } catch (e) {
-      print("aqui esta el error ${e.toString()}");
+      print("aqui esta el error uno ${e.toString()}");
       return null;
     }
   }
@@ -303,7 +303,7 @@ class ProductContoller extends GetxController {
         return true;
       }
     } catch (e) {
-      print("aqui esta el error ${e.toString()}");
+      print("aqui esta el error dos ${e.toString()}");
       return false;
     }
   }
@@ -370,7 +370,7 @@ class ProductContoller extends GetxController {
         return true;
       }
     } catch (e) {
-      print("aqui esta el error ${e.toString()}");
+      print("aqui esta el error tres ${e.toString()}");
       return false;
     }
   }
@@ -430,7 +430,7 @@ class ProductContoller extends GetxController {
    } catch (e) {
       controllerLoading.isLoading.value=false;
 
-      print("aqui esta el error ${e.toString()}");
+      print("aqui esta el error cuatro ${e.toString()}");
       return e.toString();
     }
   }
