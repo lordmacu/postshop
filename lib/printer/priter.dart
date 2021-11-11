@@ -43,6 +43,14 @@ class Printer extends StatelessWidget {
            Obx(()=> Container(
              child:Text(" impresoras detectadas  ${controllerPrinter.devices.length}") ,
            )),
+            Container(
+              child: RaisedButton(
+                onPressed: (){
+                  controllerPrinter.startSscan();
+                },
+                child: Text("detectar scaner"),
+              ),
+            ),
 
             Expanded(child:  Obx(()=>ListView.builder(
                 itemCount: controllerPrinter.devices.length,

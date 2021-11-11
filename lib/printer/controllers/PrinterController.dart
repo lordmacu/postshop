@@ -44,6 +44,13 @@ class PrinterContoller extends GetxController {
       devices = devices;
     });
     printerManager.startScan(Duration(seconds: 4));
+
+
+  }
+
+  startSscan(){
+    printerManager.startScan(Duration(seconds: 20));
+
   }
 
 
