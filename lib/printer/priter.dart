@@ -32,7 +32,7 @@ class Printer extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Impresoras"),
+        title: Text("Impresoras v2"),
       ),
       body: Container(
         child:Column(
