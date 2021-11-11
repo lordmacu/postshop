@@ -1,4 +1,5 @@
 import 'package:esc_pos_bluetooth/esc_pos_bluetooth.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 import 'package:get/get.dart';
 import 'package:poshop/api_client.dart';
 import 'package:poshop/checkout/models/DiscountSimple.dart';
@@ -37,19 +38,46 @@ class PrinterContoller extends GetxController {
 
   RxList<PrinterBluetooth> devices = RxList<PrinterBluetooth>();
 
+  RxList devicesBluethot = RxList();
+
   @override
   void onInit() async {
+    FlutterBlue flutterBlue = FlutterBlue.instance;
+    flutterBlue.startScan(timeout: Duration(seconds: 4));
+
+    var subscription = flutterBlue.scanResults.listen((results) {
+      // do something with scan results
+      for (ScanResult r in results) {
+        devicesBluethot.add({"name":r.device.name,"rssi":r.rssi});
+      }
+    });
+
+
     printerManager.scanResults.listen((devices) async {
-      isPrintScaned.value=true;
       devices = devices;
     });
-    printerManager.startScan(Duration(seconds: 4));
+
+    flutterBlue.stopScan();
+
+    //printerManager.startScan(Duration(seconds: 4));
 
 
   }
 
   startSscan(){
-    printerManager.startScan(Duration(seconds: 20));
+    isPrintScaned.value=true;
+
+    try{
+      printerManager.stopScan();
+
+      printerManager.startScan(Duration(seconds: 20));
+
+    }catch(e){
+      printerManager.stopScan();
+      printerManager.startScan(Duration(seconds: 20));
+
+    }
+
 
   }
 

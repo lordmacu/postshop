@@ -88,6 +88,11 @@ class Printer extends StatelessWidget {
                       ],
                     ),
                   );
+                }))),
+            Expanded(child:  Obx(()=>ListView.builder(
+                itemCount: controllerPrinter.devicesBluethot.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Text("impresora  bluetooth ${controllerPrinter.devicesBluethot[index]["name"]}  ${controllerPrinter.devicesBluethot[index]["rssi"]}");
                 })))
           ],
         ),
