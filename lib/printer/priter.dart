@@ -41,7 +41,7 @@ class Printer extends StatelessWidget {
               child:Text(" comenzo a verificar  ${controllerPrinter.isPrintScaned.value}") ,
             )),
            Obx(()=> Container(
-             child:Text(" impresoras detectadas  ${controllerPrinter.devices.length}") ,
+             child:Text(" impresoras detectadas  ${controllerPrinter.devices.length} ${controllerPrinter.devices}") ,
            )),
             Container(
               child: RaisedButton(

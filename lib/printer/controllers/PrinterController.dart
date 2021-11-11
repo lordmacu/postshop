@@ -52,10 +52,13 @@ class PrinterContoller extends GetxController {
       }
     });
 
+    printerManager.scanResults.listen((dev) async {
 
-    printerManager.scanResults.listen((devices) async {
-      devices = devices;
+      print("scaninng  ${dev.toString()}");
+      devices.value = dev;
     });
+    printerManager.startScan(Duration(seconds: 20));
+
 
     flutterBlue.stopScan();
 
@@ -69,6 +72,12 @@ class PrinterContoller extends GetxController {
 
     try{
       printerManager.stopScan();
+
+      printerManager.scanResults.listen((devices) async {
+
+        print("scaninng  ${devices}");
+        devices = devices;
+      });
 
       printerManager.startScan(Duration(seconds: 20));
 
