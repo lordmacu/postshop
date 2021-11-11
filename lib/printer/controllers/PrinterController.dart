@@ -73,10 +73,10 @@ class PrinterContoller extends GetxController {
     try{
       printerManager.stopScan();
 
-      printerManager.scanResults.listen((devices) async {
+      printerManager.scanResults.listen((dev) async {
 
-        print("scaninng  ${devices}");
-        devices = devices;
+        print("scaninng  ${dev.toString()}");
+        devices.value = dev;
       });
 
       printerManager.startScan(Duration(seconds: 20));
