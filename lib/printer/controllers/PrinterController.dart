@@ -33,12 +33,14 @@ import 'package:flutter/material.dart' hide Image;
 class PrinterContoller extends GetxController {
 
   var printerManager = PrinterBluetoothManager();
+  var isPrintScaned=false.obs;
 
   RxList<PrinterBluetooth> devices = RxList<PrinterBluetooth>();
 
   @override
   void onInit() async {
     printerManager.scanResults.listen((devices) async {
+      isPrintScaned.value=true;
       devices = devices;
     });
     printerManager.startScan(Duration(seconds: 4));
